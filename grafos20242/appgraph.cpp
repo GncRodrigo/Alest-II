@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     //Graph g("tinyG.txt");
-    Graph g("mediumG.txt");
+    Graph g("movies.txt");
     // g.addEdge("0", "1");
     // g.addEdge("0", "2");
     // g.addEdge("2", "1");

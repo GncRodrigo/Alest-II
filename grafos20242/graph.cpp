@@ -5,23 +5,34 @@
 #include <set>
 
 using namespace std;
-
+string trim(const string& str) {
+    size_t first = str.find_first_not_of(' ');
+    size_t last = str.find_last_not_of(' ');
+    return (first == string::npos || last == string::npos) ? "" : str.substr(first, (last - first + 1));
+}
 Graph::Graph() {
 }
 
 Graph::Graph(string filename) {
 	ifstream file;
 	file.open(filename);
-	string line, v, w;
+	string line;
 	if(file.is_open()) {
 		while(getline(file, line)) {
 			stringstream ss(line);
-			getline(ss, v, ' ');
-			getline(ss, w, ' ');
-  	    	addEdge(v, w);
+			string movie;
+			getline(ss, movie, '/');
+			movie = trim(movie);
+			string actor;
+			while(getline(ss, actor, '/')) {
+				actor = trim(actor);
+				if(!actor.empty()) {
+  	    	addEdge(movie, actor);
     	}
-    	file.close();
 	}
+}
+file.close();
+}
 }
 
 vector<string> Graph::getAdj(string v) {

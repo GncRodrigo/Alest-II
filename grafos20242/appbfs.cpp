@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  Graph g("tinyG.txt");
+  Graph g("movies.txt");
   BreadthFirstSearch bfs(g, "0");
 
   for (auto const &v : g.getVerts())
